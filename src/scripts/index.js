@@ -50,7 +50,7 @@
           function(data) {
               var results;
               $.each( data.items, function( i, item ) {
-                results = '<div class="col-md-2 col-xs-12"><iframe src="http://www.youtube.com/embed/'+item.snippet.resourceId.videoId+'" frameborder="0" allowfullscreen></iframe></div>';
+                results = '<div class="col-md-2 col-xs-12"><iframe src="https://www.youtube.com/embed/'+item.snippet.resourceId.videoId+'" frameborder="0" allowfullscreen></iframe></div>';
                 $('#videosYoutube').append(results);
               });
           }
