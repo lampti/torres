@@ -22,7 +22,9 @@ app.use('/', require('./routes'));
 
 // CREATE SERVER ============================================
 
-app.listen(3000, function(){
+var PORT = process.env.PORT || 3000;
+
+app.listen(PORT, function(){
     console.log('App started in port 3000');
 });
 
