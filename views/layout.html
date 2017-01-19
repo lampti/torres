@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta property="og:title" content="Prefeitura Municipal de Torres" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://www.torres.rs.gov.br/images/logo2.png" />
+  <meta property="og:url" content="http://www.torres.rs.gov.br/" />
+  <meta property="og:description" content="Site oficial da prefeitura municipal de Torres - RS." />
+
+  <title>Prefeitura Municipal de Torres - RS</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css" >
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/styles/main.min.css">
+
+  <link rel="shortcut icon" href="http://torres.rs.gov.br/templates/torres/favicon.ico">
+</head>
+<body>
+  <header id="header">
+    <a class="site-logo" href="/">
+      <img src="images/logo-pref-torres.png" alt="logo">
+    </a>
+
+    <nav role="navigation" id="nav-main" class="okayNav">
+      <ul>
+        <li {% if title === "prefeitura" %} class="active" {% endif %}><a href="/">Prefeitura</a></li>
+        <li {% if title === "secretarias" %} class="active" {% endif %}><a href="/secretarias">Secretarias e Dir.</a></li>
+        <li {% if title === "portal" %} class="active" {% endif %}><a href="">Portal Transparência</a></li>
+        <li {% if title === "popular" %} class="active" {% endif %}><a href="">Participação popular</a></li>
+        <li {% if title === "acesso" %} class="active" {% endif %}><a href="">Acesso a informação</a></li>
+        <li class="search"><a id="optSearch" href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+      </ul>
+    </nav>
+  </header><!-- #header -->
+
+  <main id="content" class="content">
+    <div class="search-box">
+      <a id="optSearchClose" class="search-close" href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
+      <form class="form" action="" method="">
+        <input id="q" name="q" type="text" value="" placeholder="Pesquisar" autocomplete="off">
+      </form>
+    </div>
+
+    {% block content %}{% endblock %}
+
+    <!-- Youtube Videos -->
+    <div class="row">
+      <h3>Vídeos recentes</h3>
+      <div id="videosYoutube" class="row youtube"></div>
+    </div>
+
+  </main><!-- #content -->
+
+  <footer class="page-footer">
+    <div class="row">
+      <div class="page-links">
+        <div class="row center-md">
+          <div class="col-md-3 col-xs-12 center-xs">
+            <div class="box">
+                Link
+            </div>
+            <div class="box">
+                Link
+            </div>
+            <div class="box">
+                Link
+            </div>
+          </div>
+          <div class="col-md-3 col-xs-12 center-xs">
+            <div class="box">
+                Link
+            </div>
+            <div class="box">
+                Link
+            </div>
+            <div class="box">
+                Link
+            </div>
+          </div>
+          <div class="col-md-3 col-xs-12 center-xs">
+              <div class="box">
+                  Link
+              </div>
+              <div class="box">
+                  Link
+              </div>
+              <div class="box">
+                  Link
+              </div>
+          </div>
+          <div class="col-md-3 col-xs-12 center-xs">
+            <ul class="social-links">
+              <li><a class="tw" href="http://twitter.com/" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+              <li><a class="fb" href="http://facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+              <li><a class="in" href="http://instagram.com/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+              <li><a class="you" href="http://youtube.com/" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="row center-xs center-md">
+        © 2017 - Prefeitura Municipal de Torres/RS
+      </div>
+    </div>
+  </footer>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="/scripts/main.min.js"></script>
+</body>
+</html>

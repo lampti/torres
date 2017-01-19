@@ -1,0 +1,429 @@
+// COLORS
+$white: #FFFFFF;
+$gray: #DDD;
+$black: #000;
+$blackOpc: rgba(44,47,54,0.95);
+$brown: #5b302b;
+$red: #b4272c;
+$darkGray: #555;
+$lightGray: #f7f7f7;
+$blueTwitter: #55acee;
+$blueFacebook: #3b5998;
+$redYoutube: #c4302b;
+
+
+// SETUP
+* { box-sizing:border-box }
+*:before, *:after { box-sizing:inherit }
+
+html {
+  font-size: 62.5%;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body {
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.42857143;
+  color: $darkGray;
+  background-color: $lightGray;
+
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+a { text-decoration: none }
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+main {
+  margin-top: 6rem;
+  padding: 3rem;
+  text-align: justify;
+  flex: 1 0 auto;
+}
+
+// HEADER
+header {
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #fff;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  height: 7rem;
+  padding: 0 15px;
+  position: fixed;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+h1, h2, h3, h4, h5 {
+  display: inline-block;
+}
+
+.site-logo {
+  // transition: color 200ms cubic-bezier(.55, 0, .1, 1);
+  // color: #30acff;
+  // font-size: 3rem;
+  width: 120px;
+}
+
+.site-logo img {
+  // position: absolute;
+  // top: 0;
+  margin-top: 5px;
+}
+
+.ok-header__logo:hover {color: $red}
+
+// okayNav
+/*
+ * We are hiding the invisible nav outside the screen
+ * so we need to avoid the horizontal scroll
+ */
+body.okayNav-loaded {
+  overflow-x: hidden;
+}
+.okayNav-header {
+  position: fixed;
+  top: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0 15px;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.okayNav:not(.loaded) {
+  visibility: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.okayNav ul {
+  /* We want two navigations - one hidden and one visible */
+  float: left;
+}
+.okayNav a {
+  position: relative;
+  z-index: 1;
+}
+.okayNav__nav--visible {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.okayNav__nav--visible li {
+  display: inline-block;
+}
+.okayNav__nav--visible li.active a {
+  color: $black;
+  background: $lightGray;
+}
+.okayNav__nav--visible li a {
+  transition: background-color 0.5s ease;
+}
+.okayNav__nav--visible li a:hover {
+  color: $black;
+  background: $lightGray;
+}
+.okayNav__nav--visible a {
+  /* Link styling for the visible part of the nav */
+  display: block;
+  padding: 15px 15px;
+  transition: color 200ms cubic-bezier(0.55, 0, 0.1, 1);
+}
+.okayNav__nav--visible:empty ~ .okayNav__menu-toggle {
+  top: 0;
+}
+/* Link styling for the off-screen part of the nav */
+.okayNav__nav--invisible {
+  position: fixed;
+  top: 7rem;
+  bottom: 0;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.okayNav__nav--invisible a {
+  display: block;
+  width: 240px;
+  padding: 15px;
+  background: #fff;
+}
+.okayNav__nav--invisible li.active a {
+  color: $black;
+  background: $lightGray;
+}
+.okayNav__nav--invisible li a {
+  transition: background-color 0.5s ease;
+}
+.okayNav__nav--invisible li a:hover {
+  color: $black;
+  background: $lightGray;
+}
+.okayNav__nav--invisible.nav-left {
+  left: 0;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+.okayNav__nav--invisible.nav-right {
+  right: 0;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+.okayNav__nav--invisible.transition-enabled {
+  transition: -webkit-transform 400ms cubic-bezier(0.55, 0, 0.1, 1);
+  transition: transform 400ms cubic-bezier(0.55, 0, 0.1, 1);
+  transition: transform 400ms cubic-bezier(0.55, 0, 0.1, 1), -webkit-transform 400ms cubic-bezier(0.55, 0, 0.1, 1);
+}
+.okayNav__nav--invisible.nav-open {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+/* Kebab icon */
+.okayNav__menu-toggle {
+  position: relative;
+  z-index: 1;
+  top: 15px;
+  float: left;
+  width: 40px;
+  height: 20px;
+  cursor: pointer;
+  transition: -webkit-transform 400ms cubic-bezier(0.55, 0, 0.1, 1);
+  transition: transform 400ms cubic-bezier(0.55, 0, 0.1, 1);
+  transition: transform 400ms cubic-bezier(0.55, 0, 0.1, 1), -webkit-transform 400ms cubic-bezier(0.55, 0, 0.1, 1);
+}
+.okayNav__menu-toggle.okay-invisible {
+  position: absolute;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+  opacity: 0;
+}
+.okayNav__menu-toggle span {
+  position: absolute;
+  right: 0;
+  left: 0;
+  display: block;
+  width: 4px;
+  height: 4px;
+  margin: auto;
+  pointer-events: none;
+  border-radius: 50%;
+}
+.okayNav__menu-toggle span:nth-child(1) {
+  top: 0;
+}
+.okayNav__menu-toggle span:nth-child(2) {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.okayNav__menu-toggle span:nth-child(3) {
+  bottom: 0;
+}
+.okayNav__menu-toggle.icon--active {
+  /* Kebab icon when off-screen nav is open */
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+.okayNav__nav--visible li.search a,
+.okayNav__nav--invisible li.search a,
+.okayNav__nav--visible li.search a:hover,
+.okayNav__nav--invisible li.search a:hover {
+  background: $white;
+  padding-right: 15px;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.okayNav__nav--visible li.search a i,
+.okayNav__nav--invisible li.search a i {
+  font-size: 1.6rem;
+}
+
+// okayNav THEME
+.okayNav-header {
+  height: 7rem;
+  background-color: #fff;
+}
+.okayNav a {
+  color: #2e2e33;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.okayNav a:hover {
+  color: $red;
+}
+.okayNav__nav--visible a:hover {
+  color: $red;
+}
+.okayNav__nav--invisible {
+  background: #fff;
+}
+.okayNav__menu-toggle span {
+  background: #2e2e33;
+}
+.okayNav__menu-toggle.icon--active span {
+  background: $darkGray;
+}
+
+// FOOTER
+footer.page-footer {
+  background-color: $gray;
+}
+
+.page-links {
+  padding: 2rem;
+  width: 100%;
+}
+
+footer.page-footer .footer-copyright {
+  overflow: hidden;
+  height: 50px;
+  line-height: 50px;
+  color: $white;
+  background-color: $darkGray;
+}
+
+// BOX SEARCH
+.search-box {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  height: 69px;
+  z-index: 1;
+  background: $darkGray;
+  transition: all 500ms ease 0s;
+}
+.search-box.active {
+  top: 70px;
+}
+.search-box .search-close {
+  color: $white;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  line-height: 75px;
+  right: 10px;
+  z-index: 2;
+}
+.search-close i {
+  font-size: 1.8rem;
+}
+.search-box form {
+  position: relative;
+  z-index: 1003;
+  background: transparent;
+  padding: 0 0 0 20px;
+}
+.search-box form input {
+  z-index: 1020;
+  background: $brown;
+  color: #fff;
+  height: 65px;
+}
+.search-box form input:focus {
+  outline: none;
+}
+.search-box form input::placeholder {
+  color: lighten($darkGray, 25%);
+  font-weight: 400;
+}
+.search-box form input[type=text] {
+  text-transform: lowercase;
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  overflow: hidden;
+  font-size: 3.5rem;
+  line-height: 1;
+  margin-top: 2.5px;
+  width: 80%;
+}
+// SOCIAL LINKS
+.social-links {
+  display: inline-flex;
+  list-style: none;
+  width: auto;
+  padding-top: 15px;
+}
+
+.social-links li {
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+  margin: 0 10px 0 0;
+}
+
+.social-links li a {
+  color: #fff;
+  background-color: $darkGray;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  overflow: hidden;
+  line-height: 42px;
+  font-size: 24px;
+  text-align: center;
+  text-decoration: none;
+  -webkit-transition: 0.25s all ease-in-out;
+  -moz-transition: 0.25s all ease-in-out;
+  transition: 0.25s all ease-in-out;
+}
+.social-links li a.tw:hover {
+  background-color: $blueTwitter;
+}
+.social-links li a.fb:hover {
+  background-color: $blueFacebook;
+}
+.social-links li a.in:hover {
+  background: #f09433;
+  background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+  background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+}
+.social-links li a.you:hover {
+  background-color: $redYoutube;
+}
+
+// YOUTUBE
+.youtube iframe {
+  width: 100%;
+  height: auto;
+}
